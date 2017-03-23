@@ -2,8 +2,8 @@
 // @name        Standort Gruppenchat Freewar
 // @namespace   Mordino
 // @description Postet den aktuellen Standort im Gruppenchat
-// @include     http://*.freewar.de/freewar/internal/*
-// @version     1
+// @include     *.freewar.de/freewar/internal/*
+// @version     1.1.2
 // @grant       GM_getValue
 // @grant       GM_setValue
 // ==/UserScript==
