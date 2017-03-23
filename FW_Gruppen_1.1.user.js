@@ -3,7 +3,8 @@
 // @namespace   Mordino
 // @description Postet den aktuellen Standort im Gruppenchat
 // @include     *.freewar.de/freewar/internal/*
-// @version     1.1.2
+//@updateURL https://gist.github.com/ucolaf/b8198e41c1c13d1c5391dd0b9ab4c29e/raw/4b5b50f14e418dda9c917154c96c666d161eeb26/FW_Gruppen_1.2.1.user.js"
+// @version     1.2.1
 // @grant       GM_getValue
 // @grant       GM_setValue
 // ==/UserScript==
