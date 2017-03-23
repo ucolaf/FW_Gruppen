@@ -4,9 +4,10 @@
 // @description Postet den aktuellen Standort im Gruppenchat
 // @include     *.freewar.de/freewar/internal/*
 // @downloadURL https://gist.github.com/ucolaf/b8198e41c1c13d1c5391dd0b9ab4c29e
-// @version     1.2.1
+// @version     1.2.2
 // @grant       GM_getValue
 // @grant       GM_setValue
+// Changes: 1.2.2 Code optimize, URL http removed for work on https
 // ==/UserScript==
 //alert("test");
 var frames = window.parent.frames;
