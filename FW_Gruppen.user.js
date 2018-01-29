@@ -4,7 +4,7 @@
 // @namespace   Mordino
 // @description Postet den aktuellen Standort im Gruppenchat
 // @include     *.freewar.de/freewar/internal/main.php
-// @version     1.2.5
+// @version     1.2.4
 // @downloadURL https://github.com/ucolaf/FW_Gruppen/raw/master/FW_Gruppen.user.js
 // @updateURL   https://raw.githubusercontent.com/ucolaf/FW_Gruppen/master/FW_Gruppen.user.js
 // @grant       GM_getValue
