@@ -1,14 +1,16 @@
 // ==UserScript==
 // @name        Standort Gruppenchat Freewar
+// @author      Mordino Mordas
 // @namespace   Mordino
 // @description Postet den aktuellen Standort im Gruppenchat
-// @include     *.freewar.de/freewar/internal/*
+// @include     *.freewar.de/freewar/internal/main.php
+// @version     1.2.4
 // @downloadURL https://gist.github.com/ucolaf/b8198e41c1c13d1c5391dd0b9ab4c29e
-// @version     1.2.2
+// @updateURL   https://gist.github.com/ucolaf/b8198e41c1c13d1c5391dd0b9ab4c29e
 // @grant       GM_getValue
 // @grant       GM_setValue
-// Changes: 1.2.2 Code optimize, URL http removed for work on https
 // ==/UserScript==
+// Changes: 1.2.3 Code optimize, Firefox 57+ and Tamper Monkey ready, 1.2.4 only main.php, a little bit faster
 //alert("test");
 var frames = window.parent.frames;
 var Tags = document.getElementsByClassName('mainheader');
@@ -25,47 +27,46 @@ for (var i = 0; i < Tags.length; i++) {
   var npc = sendtext2.indexOf('(Gruppen-NPC)');
   if (npc != - 1) {
     var strleft = sendtext2.substring(0, npc);
+    var npcname = strleft + ' (Gruppen-NPC)';
     var frames = window.parent.frames;
-    frames[3].document.getElementById('chat_text').value = strleft + ' (Gruppen-NPC)';
+    // frames[3].document.getElementById('chat_text').value = strleft + ' (Gruppen-NPC)';
     GM_setValue('ct', '1');
-  } 
-  else {
-    if (GM_getValue('ct') == '1') {
-      clearChat();
-    }
-  }
-  console.log(GM_getValue('ct') + npc);
-}
-var Tags = document.getElementsByClassName('personlistcaption');
-for (var i = 0; i < Tags.length; i++) {
-  var tag = Tags[i];
-  var sendtext3 = tag.textContent;
-  var sendtext3 = sendtext3.trim();
-  var npc = sendtext3.indexOf('Du siehst keine Person an diesem Ort');
-  if (npc != - 1) {
-    if (GM_getValue('ct') == '1') {
-      clearChat();
-    }
   }
 }
-function clearChat() {
-  var frames = window.parent.frames;
-  frames[3].document.getElementById('chat_text').value = '';
-  GM_setValue('ct', '0');
-  // console.log('clearChat');
-}
+
 if (sendtext != null) {
   var input = frames[3].document.createElement('input');
   input.type = 'submit';
   input.name = 'group';
   input.className = 'input';
-  input.value = 'Chat';
+  input.value = 'Ort->Chat';
   input.onclick = sendChat;
   input.setAttribute('style', 'font-size:12px;position:absolute;top:20px;right:20px;');
+  document.body.appendChild(input);
+}
+if (npcname != null) {
+  var input = frames[3].document.createElement('input');
+  input.type = 'submit';
+  input.name = 'group';
+  input.className = 'input';
+  input.value = 'NPC->Chat';
+  input.onclick = sendChat2;
+  input.setAttribute('style', 'font-size:12px;position:absolute;top:40px;right:20px;');
   document.body.appendChild(input);
 }
 function sendChat() {
   var frames = window.parent.frames;
   //alert(frames[3].document.getElementById('group').value);
   frames[3].document.getElementById('chat_text').value = sendtext;
+}
+function sendChat2() {
+  var frames = window.parent.frames;
+  //alert(frames[3].document.getElementById('group').value);
+  frames[3].document.getElementById('chat_text').value = npcname;
+}
+function clearChat() {
+  var frames = window.parent.frames;
+  frames[3].document.getElementById('chat_text').value = '';
+  GM_setValue('ct', '0');
+  // console.log('clearChat');
 }
